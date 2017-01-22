@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include "BullCowGame.h"
+
+//function prototypes
+void printIntro();
+std::string getGuess();
+void playGame();
+bool askToPlayAgain();
+
+BullCowGame BCGame;
+
+//main thread
+int main() {
+	printIntro();
+	playGame();
+
+	return 0;
+}
+
+void printIntro() {
+	constexpr int WORD_LENGTH = 5;
+	std::cout << "Welcome to ";
+	std::cout << "Bulls and Cows" << std::endl;
+	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << std::endl;
+	return;
+}
+
+std::string getGuess() {
+	std::string guess = "";
+
+	std::cout <<"Try "<< BCGame.getCurrentTry<<"Enter a word" << std::endl;
+	std::getline(std::cin, guess);
+	return guess;
+}
+
+void printGuess() {
+	std::cout << "Your guess was: " << getGuess() << std::endl;
+	return;
+}
+
+int attemptLimit = 5;
+void playGame() {
+	int maxTries=BCGame.getMaxTries();
+
+	for (int i = 0; i < attemptLimit; i++) {
+		printGuess();
+	}
+}
+
+bool askToPlayAgain()
+{
+	std::cout << "Do you want to play again?";
+	std::string response = "";
+	std::getline(std::cin, response);
+	return (response[0]=='y')|| (response[0] == 'Y')  ;
+}

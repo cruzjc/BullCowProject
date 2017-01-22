@@ -1,0 +1,23 @@
+#include "BullCowGame.h"
+
+BullCowGame::BullCowGame()
+{
+	reset();
+}
+
+void BullCowGame::reset()
+{
+	myCurrentTry=1;
+	myMaxTries=5;
+	return;
+}
+
+int BullCowGame::getMaxTries() const
+{
+	return myMaxTries;
+}
+
+int BullCowGame::getCurrentTry()
+{
+	return myCurrentTry;
+}
